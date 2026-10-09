@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bv020gkqqqnxm"]
+
+[ext_resource type="Script" uid="uid://jniounmdd0lt" path="res://scenes/court.gd" id="1_lpavh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jo3ai"]
+friction = 0.6
+bounce = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jo3ai"]
+radius = 0.18320966
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jo3ai"]
+size = Vector2(0.25, 0.25)
+
+[node name="Node3D" type="Node3D" unique_id=1215938537]
+script = ExtResource("1_lpavh")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1162989552]
+transform = Transform3D(1, 0, 0, 0, 0.87602067, 0.48227358, 0, -0.48227358, 0.87602067, 0, 7.51276, 9.073076)
+fov = 65.0
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=185736497]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1131895962]
+size = Vector3(9, 1, 9)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1182347998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -4)
+radius = 0.11767578
+height = 5.0
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1127761834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5023804, -4.028717)
+size = Vector3(3, 2.0047607, 0.49908447)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1984101189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9382324, -3.2998211)
+radius = 0.4951172
+height = 0.123535156
+sides = 32
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D2" unique_id=681766316]
+operation = 2
+radius = 0.4321289
+height = 0.23828125
+sides = 32
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2071064455]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.8660254, 0, -0.8660254, 0.49999997, 0, 9, 0)
+
+[node name="RigidBody3D-ball" type="RigidBody3D" parent="." unique_id=1454597040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.178484, 3)
+physics_material_override = SubResource("PhysicsMaterial_jo3ai")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D-ball" unique_id=1791399429]
+radius = 0.1737346
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D-ball" unique_id=867729486]
+shape = SubResource("SphereShape3D_jo3ai")
+
+[node name="MeshInstance3D-plane" type="MeshInstance3D" parent="." unique_id=1013339258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -3.2724528)
+mesh = SubResource("PlaneMesh_jo3ai")
+
+[node name="Camera3D2" type="Camera3D" parent="." unique_id=1595408741]
+transform = Transform3D(-3.7855173e-08, -0.5, 0.8660254, -2.1855694e-08, 0.8660254, 0.5, -1, 0, -4.371139e-08, 9, 8, 0)
+current = true
+fov = 65.0
